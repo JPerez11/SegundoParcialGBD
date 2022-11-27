@@ -1,0 +1,39 @@
+<%- include('template/header',{tituloWeb:'Mascotas del propietario'}); %>
+
+<div class="container">
+
+  <div class="d-flex mb-3 align-items-center">
+    <div class="me-auto p-2">
+      <h1>Lista de mascotas del propietario</h1>
+    </div>
+    <div class="p-2">
+        <a href="/propietarios" class="btn btn-secondary" title="Regresar"><i class="fa-solid fa-arrow-left-long"></i></a>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr class="table-info">
+        <th scope="col">Asignaci&oacute;n id</th>
+        <th scope="col">Nombre de mascota</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if(arrayMascotas.length > 0) { %>
+        <% let cont = 0; %>
+        <% arrayMascotas.forEach(mascota => { %>
+        <tr>
+          <td><%= mascota.id %></td>
+          <td><%= nombreMascota[cont] %></td>
+        </tr>
+        <% cont++; }) %>
+        <% } else { %>
+            <tr>
+                <td colspan="2">No hay asignaciones en la base de datos</td>
+            </tr>
+      <% } %>
+    </tbody>
+  </table> 
+</div>
+
+<%- include('template/footer'); %>

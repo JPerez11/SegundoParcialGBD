@@ -1,0 +1,42 @@
+<%- include('template/header',{tituloWeb:'Asignar mascota'}); %>
+
+<div class="container">
+
+  <div class="d-flex mb-3 align-items-center">
+    <div class="me-auto p-2">
+      <h1><%= modulo %></h1>
+    </div>
+    <div class="p-2">
+      <a href="/propietarios" class="btn btn-secondary" title="Regresar"><i class="fa-solid fa-arrow-left-long"></i></a>
+    </div>
+  </div>
+    
+  <form action="/asignarMascota" method="post">
+    <div class="mb-3">
+      <select name="idPropietario" id="idPropietario" class="form-select">
+        <option selected>Seleccione un propietario</option>
+      <% if(arrayPropietarios.length>0) { %>
+          <% arrayPropietarios.forEach(propietario => { %>
+              <option value="<%= propietario.id %>"><%= propietario.nombre %></option>
+          <%})%>
+      <%}%>
+      </select>
+    </div>
+    <div class="mb-3">
+          <select name="idMascota" id="idMascota" class="form-select">
+            <option selected>Seleccione una mascota</option>
+        <% if(arrayMascotas.length>0){ %>
+            <% arrayMascotas.forEach(mascota=>{ %>
+                <option value="<%= mascota.id %>"><%= mascota.nombre %></option>
+            <%})%>
+        <%}%>
+        </select>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-info text-white fs-5 float-end">Agregar</button>
+    </div>
+  </form>
+
+</div>
+
+<%- include('template/footer'); %>

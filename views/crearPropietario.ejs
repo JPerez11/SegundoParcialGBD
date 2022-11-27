@@ -1,0 +1,43 @@
+<%- include('template/header',{tituloWeb:'Propietario'}); %>
+
+<div class="container">
+
+  <div class="d-flex mb-3 align-items-center">
+    <div class="p-2">
+      <h1>Agregar nueva propietario</h1>
+    </div>
+    <div class="ms-auto p-2">
+      <a href="/propietarios" class="btn btn-secondary" title="Regresar"><i class="fa-solid fa-arrow-left-long"></i></a>
+    </div>
+  </div>
+
+  <form action="/propietarios" method="post">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" name="nombre">
+    </div>
+    <div class="mb-3">
+      <label for="apellido" class="form-label">Apellido</label>
+      <input type="text" class="form-control" id="apellido" name="apellido">
+    </div>
+    <div class="mb-3">
+      <label for="documento" class="form-label">Documento</label>
+      <input type="text" class="form-control" id="documento" name="documento">
+    </div>
+    <div class="mb-3">
+      <label for="telefono" class="form-label">Telefono</label>
+      <input type="text" class="form-control" id="telefono" name="telefono">
+    </div>
+    <div class="mb-3">
+      <label for="direccion" class="form-label">Direcci&oacute;n</label>
+      <input type="text" class="form-control" id="direccion" name="direccion">
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-info text-white fs-5 float-end">Agregar</button>
+    </div>
+  </form>
+  
+</div>
+   
+    
+<%- include('template/footer'); %>  

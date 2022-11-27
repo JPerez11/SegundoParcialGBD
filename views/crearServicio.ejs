@@ -1,0 +1,31 @@
+<%- include('template/header',{tituloWeb:'Propietario'}); %>
+
+<div class="container">
+
+  <div class="d-flex mb-3 align-items-center">
+    <div class="p-2">
+      <h1>Agregar nueva propietario</h1>
+    </div>
+    <div class="ms-auto p-2">
+      <a href="/servicios" class="btn btn-secondary" title="Regresar"><i class="fa-solid fa-arrow-left-long"></i></a>
+    </div>
+  </div>
+
+  <form action="/servicios" method="post">
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">Descripci&oacute;n</label>
+      <input type="text" class="form-control" id="descripcion" name="descripcion">
+    </div>
+    <div class="mb-3">
+      <label for="valor" class="form-label">Valor</label>
+      <input type="number" class="form-control" id="valor" name="valor">
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-info text-white fs-5 float-end">Agregar</button>
+    </div>
+  </form>
+  
+</div>
+   
+    
+<%- include('template/footer'); %>  

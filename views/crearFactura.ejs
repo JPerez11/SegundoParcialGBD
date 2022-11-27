@@ -1,0 +1,35 @@
+<%- include('template/header',{tituloWeb:'Facturas'}); %>
+
+<div class="container">
+
+  <div class="d-flex mb-3 align-items-center">
+    <div class="p-2">
+      <h1><%= modulo %></h1>
+    </div>
+    <div class="ms-auto p-2">
+      <a href="/facturas" class="btn btn-secondary" title="Regresar"><i class="fa-solid fa-arrow-left-long"></i></a>
+    </div>
+  </div>
+
+  <form action="/facturas" method="post">
+    <div class="mb-3">
+        <label for="idCliente" class="form-label">Seleccione un cliente al que facturar</label>
+        <select name="idCliente" id="idCliente" class="form-select">
+          <option selected></option>
+        <% if(arrayClientes.length>0) { %>
+          <% let cont = 0; %>
+            <% arrayClientes.forEach(cliente => { %>
+                <option value="<%= cliente.id %>"><%= arrayClienteMascota[cont] %></option>
+            <% cont++; })%>
+        <%}%>
+        </select>
+      </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-info text-white fs-5 float-end">Agregar</button>
+    </div>
+  </form>
+  
+</div>
+   
+    
+<%- include('template/footer'); %>  

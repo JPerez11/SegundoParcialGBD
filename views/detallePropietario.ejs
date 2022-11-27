@@ -1,0 +1,73 @@
+<%- include('template/header', {tituloWeb: 'Detalle propietario'}); %>
+
+<div class="container">
+
+    <div class="d-flex mb-3 align-items-center">
+        <div class="p-2">
+          <h1>Detalle propietario</h1>
+        </div>
+        <div class="ms-auto p-2">
+          <a href="/propietarios" class="btn btn-secondary" title="Regresar"><i class="fa-solid fa-arrow-left-long"></i></a>
+        </div>
+      </div>
+
+    <% if (error) { %>
+        <%= mensaje %>
+    <% } else { %>
+
+        <form id="editar" data-id="<%= propietario.id %>">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" value="<%= propietario.nombre %>" id="nombre" name="nombre">
+            </div>
+            <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" class="form-control" value="<%= propietario.apellido %>" id="apellido" name="apellido">
+            </div>
+            <div class="mb-3">
+                <label for="documento" class="form-label">Documento</label>
+                <input type="text" class="form-control" value="<%= propietario.documento %>" id="documento" name="documento">
+            </div>
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Telefono</label>
+                <input type="text" class="form-control" value="<%= propietario.telefono %>" id="telefono" name="telefono">
+            </div>
+            <div class="mb-3">
+                <label for="direccion" class="form-label">Direcci&oacute;n</label>
+                <input type="text" class="form-control" value="<%= propietario.direccion %>" id="direccion" name="direccion">
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-warning float-end">Editar</button>
+              </div>
+        </form>
+    <% } %>
+</div>
+
+<script>
+    formEdit = document.getElementById('editar');
+    formEdit.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const nombre = formEdit.elements['nombre'].value;
+        const apellido = formEdit.elements['apellido'].value;
+        const documento = formEdit.elements['documento'].value;
+        const telefono = formEdit.elements['telefono'].value;
+        const direccion = formEdit.elements['direccion'].value;
+        const id = formEdit.dataset.id;
+        const data = await fetch(`/propietarios/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json' 
+            },
+            body: JSON.stringify({nombre, apellido, documento, telefono, direccion})
+        })
+        const res = await data.json();
+
+        if (res.estado) {
+            window.location.href = '/propietarios';
+        } else {
+            console.log(e);
+        }
+    })
+</script>
+
+<%- include('template/footer'); %>

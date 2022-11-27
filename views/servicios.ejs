@@ -1,0 +1,47 @@
+<%- include('template/header',{tituloWeb:'Propietario'}); %>
+
+<div class="container">
+
+  <div class="d-flex mb-3 align-items-center">
+    <div class="me-auto p-2">
+      <h1><%= listaServicios %></h1>
+    </div>
+    <div class="p-2">
+      <a class="btn btn-secondary" href="/asignarServicio" role="button"><i class="fa-solid fa-plus"></i> Asignar servicio</a>
+    </div>
+    <div class="p-2">
+      <a class="btn btn-info text-white" href="/servicios/crearServicio" role="button"><i class="fa-solid fa-file-circle-plus"></i> Agregar</a>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr class="table-info">
+        <th scope="col">Servicio id</th>
+        <th scope="col">Descipci&oacute;n</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Acci&oacute;n</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if(arrayServicios.length > 0) { %>
+        <% arrayServicios.forEach(servicio => { %>
+        <tr>
+          <td><%= servicio.id %></td>
+          <td><%= servicio.descripcion %></td>
+          <td><%= servicio.valor %></td>
+          <td>
+              <a href="servicios/<%= servicio.id %>" title="Detalle servicio" class="text-warning"><i class="fa-solid fa-file-pen fs-4"></i></a>
+          </td>
+        </tr>
+        <% }) %>
+        <% } else { %>
+            <tr>
+                <td colspan="4">No se encontraron servicios en la base de datos</td>
+            </tr>
+      <% } %>
+    </tbody>
+  </table> 
+</div>
+
+<%- include('template/footer'); %>

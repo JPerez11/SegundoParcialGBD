@@ -1,0 +1,31 @@
+<%- include('template/header',{tituloWeb:'Mascotas'}); %>
+
+<div class="container">
+
+  <div class="d-flex mb-3 align-items-center">
+    <div class="p-2">
+      <h1>Agregar nueva mascota</h1>
+    </div>
+    <div class="ms-auto p-2">
+      <a href="/mascotas" class="btn btn-secondary" title="Regresar"><i class="fa-solid fa-arrow-left-long"></i></a>
+    </div>
+  </div>
+
+  <form action="/mascotas" method="post">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" name="nombre">
+    </div>
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">Descripci&oacute;n</label>
+      <input type="text" class="form-control" id="descripcion" name="descripcion">
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-info text-white fs-5 float-end">Agregar</button>
+    </div>
+  </form>
+  
+</div>
+   
+    
+<%- include('template/footer'); %>  

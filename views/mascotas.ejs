@@ -1,0 +1,42 @@
+<%- include('template/header',{tituloWeb:'Mascotas'}); %>
+
+<div class="container">
+
+  <div class="d-flex mb-3 align-items-center">
+    <div class="me-auto p-2">
+      <h1><%= listaMascotas %></h1>
+    </div>
+    <div class="p-2">
+      <a class="btn btn-info text-white" href="/mascotas/crearMascota" role="button"><i class="fa-solid fa-plus"></i></i> Agregar</a>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr class="table-info">
+        <th scope="col">Mascota id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripci&oacute;n</th>
+        <th scope="col">Acci&oacute;n</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if(arrayMascotas.length > 0) { %>
+        <% arrayMascotas.forEach(mascota => { %>
+        <tr>
+          <td><%= mascota.id %></td>
+          <td><%= mascota.nombre %></td>
+          <td><%= mascota.descripcion %></td>
+          <td><a href="mascotas/<%= mascota.id %>" title="Detalle propietario" class="text-warning"><i class="fa-solid fa-pen-to-square fs-4"></i></a></td>
+        </tr>
+        <% }) %>
+        <% } else { %>
+            <tr>
+                <td colspan="4">No se encontraron mascotas en la base de datos</td>
+            </tr>
+      <% } %>
+    </tbody>
+  </table> 
+</div>
+
+<%- include('template/footer'); %>

@@ -1,0 +1,52 @@
+<%- include('template/header',{tituloWeb:'Propietario'}); %>
+
+<div class="container">
+
+  <div class="d-flex mb-3 align-items-center">
+    <div class="me-auto p-2">
+      <h1><%= listaPropietarios %></h1>
+    </div>
+    <div class="p-2">
+      <a class="btn btn-secondary" href="/asignarMascota" role="button"><i class="fa-solid fa-plus"></i> Asignar mascota</a>
+    </div>
+    <div class="p-2">
+      <a class="btn btn-info text-white" href="/propietarios/crearPropietario" role="button"><i class="fa-solid fa-user-plus"></i> Agregar</a>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr class="table-info">
+        <th scope="col">Propietario id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Documento</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Direcci&oacute;n</th>
+        <th scope="col">Acci&oacute;n</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if(arrayPropietarios.length > 0) { %>
+        <% arrayPropietarios.forEach(propietario => { %>
+        <tr>
+          <td><%= propietario.id %></td>
+          <td><%= propietario.nombre + " " + propietario.apellido%></td>
+          <td><%= propietario.documento %></td>
+          <td><%= propietario.telefono %></td>
+          <td><%= propietario.direccion %></td>
+          <td>
+              <a href="asignarMascota/verAsignacion/<%= propietario.id %>" title="consultar mascotas" class="text-success"><i class="fa-solid fa-paw fs-4"></i></a>&nbsp;
+              <a href="propietarios/<%= propietario.id %>" title="Detalle propietario" class="text-warning"><i class="fa-solid fa-user-pen fs-4"></i></a>
+          </td>
+        </tr>
+        <% }) %>
+        <% } else { %>
+            <tr>
+                <td colspan="6">No se encontraron propietarios en la base de datos</td>
+            </tr>
+      <% } %>
+    </tbody>
+  </table> 
+</div>
+
+<%- include('template/footer'); %>
